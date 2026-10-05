@@ -16,6 +16,8 @@ ENV NODE_ENV=production \
     NODE_USE_SYSTEM_CA=1 \
     COPILOT_API_HOME=/data
 
+RUN apk update && apk upgrade && apk cache clean
+
 COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile --production --ignore-scripts --no-cache
 
